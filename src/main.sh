@@ -13,9 +13,11 @@ for i in "$@" ; do
     '--help')
       echo -e "Utilisation: ./main.sh [OPTION]... [FICHIER]...
 
-  -t[MODE]  affiche les données sur la température, en fonction du MODE. Avec MODE 1,
-            le minimum, maximum, et la moyenne sont affiché pour chaque"
+  -t[MODE]  affiche les données sur la température, en fonction du
+            MODE. Avec MODE 1, le minimum, maximum, et la moyenne sont affiché
+            pour chaque"
       return 0 ;;
-    'test') ;;
+    '-t1')
+      t1=1;;
   esac
 done
