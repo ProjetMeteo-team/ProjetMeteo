@@ -40,4 +40,3 @@ for i in "$@" ; do
       m=1;;
   esac
 done
-
