@@ -10,6 +10,7 @@ w=0
 h=0
 m=0
 lieu=0
+tri=0
 
 for i in "$@" ; do
   echo "$i"
@@ -81,7 +82,27 @@ for i in "$@" ; do
         echo "error"
         return 0
       fi;;
+    '--tab')
+    if (( $tri == O )) ; then
+        tri=1
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '--abr')
+    if (( $tri == O )) ; then
+        tri=2
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '--avl')
+    if (( $tri == O )) ; then
+        tri=3
+      else 
+        echo "error"
+        return 0
+      fi;;
   esac
 done
 
-if F=0
