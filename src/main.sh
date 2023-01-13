@@ -9,6 +9,7 @@ p3=0
 w=0
 h=0
 m=0
+lieu=0
 
 for i in "$@" ; do
   echo "$i"
@@ -38,5 +39,49 @@ for i in "$@" ; do
       h=1;;
     '-m')
       m=1;;
+    '-F')
+      if (( $lieu == O )) ; then
+        lieu=1
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '-G')
+      if (( $lieu == O )) ; then
+        lieu=2
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '-S')
+      if (( $lieu == O )) ; then
+        lieu=3
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '-A')
+      if (( $lieu == O )) ; then
+        lieu=4
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '-O')
+      if (( $lieu == O )) ; then
+        lieu=5
+      else 
+        echo "error"
+        return 0
+      fi;;
+    '-Q')
+      if (( $lieu == O )) ; then
+        lieu=6
+      else 
+        echo "error"
+        return 0
+      fi;;
   esac
 done
+
+if F=0
