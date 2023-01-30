@@ -150,3 +150,15 @@ for i in "$@" ; do
     esac
    fi
 done
+
+if (( $t1 == 0 )) && (( $t2 == 0 )) && (( $t3 == 0 )) && (( $p1 == 0 )) && (( $p2 == 0 )) && (( $p3 == 0 )) && (( $w == 0 )) && (( $h == 0 )) && (( $m == 0 )) ; then
+  echo "error: no parameter to sort"
+  exit 0
+fi
+
+if (( $date > 0 )) ; then
+  if [[ "$date_min" = "" ]] || [[ "$date_max" = "" ]] ; then
+    echo "error: invalid dates"
+    exit 0
+  fi
+fi
