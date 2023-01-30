@@ -36,7 +36,7 @@ for i in "$@" ; do
 -Q              Utilise uniquement les données d'Antartique
 -d [min] [max]
                 "
-      return 0 ;;
+      exit 0 ;;
     '-t1')
       t1=1;;
     '-t2')
@@ -60,63 +60,63 @@ for i in "$@" ; do
         lieu=1
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '-G')
       if (( $lieu == O )) ; then
         lieu=2
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '-S')
       if (( $lieu == O )) ; then
         lieu=3
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '-A')
       if (( $lieu == O )) ; then
         lieu=4
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '-O')
       if (( $lieu == O )) ; then
         lieu=5
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '-Q')
       if (( $lieu == O )) ; then
         lieu=6
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '--tab')
       if (( $tri == O )) ; then
         tri=1
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '--abr')
       if (( $tri == O )) ; then
         tri=2
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
     '--avl')
       if (( $tri == O )) ; then
         tri=3
       else
         echo "error"
-        return 0
+        exit 0
       fi;;
   esac
 done
