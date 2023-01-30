@@ -14,6 +14,8 @@ tri=0
 date_min=''
 date_max=''
 date=0
+fichier=0
+fic=''
 
 for i in "$@" ; do
   echo "$i"
@@ -35,6 +37,14 @@ for i in "$@" ; do
       echo "error"
       exit 0
     fi
+  if (( $fichier == 1 )) ; then
+    if [ -f $i ] ; then
+       fic='$i'
+    else
+      echo "error"
+      exit 0
+    fi
+  fi
   else
     case $i in
       '--help')
@@ -146,6 +156,13 @@ for i in "$@" ; do
           exit 0
         else
           date=1;
+        fi
+       '-f')
+        if (( $fichier == 1 )) ; then
+          echo "error"
+          exit 0
+        else
+          fichier=1
         fi
     esac
    fi
