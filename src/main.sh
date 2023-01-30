@@ -25,9 +25,7 @@ for i in "$@" ; do
     else
       echo "error"
       exit 0
-    fi 
-fi
-  
+    fi
   elif (( $date == 2 )) ; then
     re='^[0-9]+$'
     if [[ $i =~ $re ]] ; then
@@ -37,8 +35,7 @@ fi
       echo "error"
       exit 0
     fi
-  
-  else 
+  else
     case $i in
       '--help')
         echo -e "Utilisation: ./main.sh [OPTION]... [FICHIER]...
