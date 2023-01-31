@@ -20,8 +20,7 @@ fic=''
 for i in "$@" ; do
   echo "$i"
   if (( $date == 1 )) ; then
-    re='^[0-9]+$'
-    if [[ $i =~ $re ]] ; then
+    if grep -qE '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$' <<< "$i" ; then #i have no idea what this does so i'm trusting stackoverflow
       date_min="$i"
       date=2
     else
@@ -29,8 +28,7 @@ for i in "$@" ; do
       exit 0
     fi
   elif (( $date == 2 )) ; then
-    re='^[0-9]+$'
-    if [[ $i =~ $re ]] ; then
+    if grep -qE '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$' <<< "$i" ; then
        date_max="$i"
        date=3
     else
