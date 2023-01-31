@@ -36,7 +36,7 @@ for i in "$@" ; do
       exit 0
     fi
   elif (( $fichier == 1 )) ; then
-    if [ -f $i ] ; then
+    if [ -f $i ] && [ -r $i ] ; then
        fic='$i'
     else
       echo "error"
