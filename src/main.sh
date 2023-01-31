@@ -176,3 +176,8 @@ if (( $date > 0 )) ; then
     exit 0
   fi
 fi
+
+if (( $fichier < 1 )) || [[ "$fic" = "" ]] ; then
+  echo "error: no file specified"
+  exit 0
+fi
