@@ -37,14 +37,13 @@ for i in "$@" ; do
       echo "error"
       exit 0
     fi
-  if (( $fichier == 1 )) ; then
+  elif (( $fichier == 1 )) ; then
     if [ -f $i ] ; then
        fic='$i'
     else
       echo "error"
       exit 0
     fi
-  fi
   else
     case $i in
       '--help')
@@ -155,15 +154,15 @@ for i in "$@" ; do
           echo "error"
           exit 0
         else
-          date=1;
-        fi
-       '-f')
-        if (( $fichier == 1 )) ; then
+          date=1
+        fi;;
+      '-f')
+        if (( $fichier > 0 )) ; then
           echo "error"
           exit 0
         else
           fichier=1
-        fi
+        fi;;
     esac
    fi
 done
