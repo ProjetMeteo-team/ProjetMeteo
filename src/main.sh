@@ -38,6 +38,7 @@ for i in "$@" ; do
   elif (( $fichier == 1 )) ; then
     if [ -f $i ] && [ -r $i ] ; then
        fic='$i'
+       fichier=2
     else
       echo "error"
       exit 0
