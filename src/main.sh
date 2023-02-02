@@ -25,7 +25,7 @@ for i in "$@" ; do
       date=2
     else
       echo "error"
-      exit 0
+      exit 1
     fi
   elif (( $date == 2 )) ; then
     if grep -qE '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$' <<< "$i" ; then
@@ -33,7 +33,7 @@ for i in "$@" ; do
        date=3
     else
       echo "error"
-      exit 0
+      exit 1
     fi
   elif (( $fichier == 1 )) ; then
     if [ -f $i ] && [ -r $i ] ; then
@@ -41,7 +41,7 @@ for i in "$@" ; do
        fichier=2
     else
       echo "error"
-      exit 0
+      exit 1
     fi
   else
     case $i in
@@ -66,7 +66,7 @@ for i in "$@" ; do
   -Q              Utilise uniquement les données d'Antartique
   -d [min] [max]
                   "
-        exit 0 ;;
+        exit 1 ;;
       '-t1')
         t1=1;;
       '-t2')
@@ -90,75 +90,75 @@ for i in "$@" ; do
           lieu=1
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-G')
         if (( $lieu == O )) ; then
           lieu=2
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-S')
         if (( $lieu == O )) ; then
           lieu=3
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-A')
         if (( $lieu == O )) ; then
           lieu=4
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-O')
         if (( $lieu == O )) ; then
           lieu=5
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-Q')
         if (( $lieu == O )) ; then
           lieu=6
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '--tab')
         if (( $tri == O )) ; then
           tri=1
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '--abr')
         if (( $tri == O )) ; then
           tri=2
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '--avl')
         if (( $tri == O )) ; then
           tri=3
         else
           echo "error"
-          exit 0
+          exit 1
         fi;;
       '-d')
         if (( $date > 2 )) ; then
           echo "error"
-          exit 0
+          exit 1
         else
           date=1
         fi;;
       '-f')
         if (( $fichier > 0 )) ; then
           echo "error"
-          exit 0
+          exit 1
         else
           fichier=1
         fi;;
@@ -168,19 +168,19 @@ done
 
 if (( $t1 == 0 )) && (( $t2 == 0 )) && (( $t3 == 0 )) && (( $p1 == 0 )) && (( $p2 == 0 )) && (( $p3 == 0 )) && (( $w == 0 )) && (( $h == 0 )) && (( $m == 0 )) ; then
   echo "error: no parameter to sort"
-  exit 0
+  exit 1
 fi
 
 if (( $date > 0 )) ; then
   if [[ "$date_min" = "" ]] || [[ "$date_max" = "" ]] ; then
     echo "error: invalid dates"
-    exit 0
+    exit 1
   fi
 fi
 
 if (( $fichier < 1 )) || [[ "$fic" = "" ]] ; then
   echo "error: no file specified"
-  exit 0
+  exit 1
 fi
 
 #echo "copie"
