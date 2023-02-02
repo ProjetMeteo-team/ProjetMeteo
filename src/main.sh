@@ -37,7 +37,7 @@ for i in "$@" ; do
     fi
   elif (( $fichier == 1 )) ; then
     if [ -f $i ] && [ -r $i ] ; then
-       fic='$i'
+       fic="$i"
        fichier=2
     else
       echo "error"
@@ -182,3 +182,7 @@ if (( $fichier < 1 )) || [[ "$fic" = "" ]] ; then
   echo "error: no file specified"
   exit 0
 fi
+
+#echo "copie"
+cp -f "$fic" "${fic%.*}_test.${fic##*.}"
+sed -i '1d' "${fic%.*}_test.${fic##*.}"
