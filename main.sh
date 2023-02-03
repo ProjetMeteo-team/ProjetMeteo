@@ -17,6 +17,8 @@ date=0
 fichier=0
 fic=''
 
+rm -f *_temp*.csv
+
 for i in "$@" ; do
   echo "$i"
   if (( $date == 1 )) ; then
@@ -184,41 +186,43 @@ if (( $fichier < 1 )) || [[ "$fic" = "" ]] ; then
 fi
 
 #echo "copie"
-cp -f "$fic" "${fic%.*}_test.${fic##*.}"
-sed -i '1d' "${fic%.*}_test.${fic##*.}"
+cp -f "$fic" "${fic%.*}_temp.${fic##*.}"
+sed -i '1d' "${fic%.*}_temp.${fic##*.}"
 
 #thanks chatgpt for explaining how awk works
 case $lieu in
   0)
     echo "no area selected"
-    cp -f "${fic%.*}_test.${fic##*.}" "${fic%.*}_test2.${fic##*.}";;
+    cp -f "${fic%.*}_temp.${fic##*.}" "${fic%.*}_temp2.${fic##*.}";;
   1)
     echo "France"
-    awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}";;
+    awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}";;
   2)
     echo "Guyane Francaise"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   3)
     echo "Saint-Pierre et Miquelon"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   4)
     echo "Antilles"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   5)
     echo "Ocean Indien"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   6)
     echo "Antartique"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
 esac
 
 if (( $date == 3 )) ; then
-  awk -F ";" -v min="$date_min" -v max="$date_max" '{split($2,x,"T"); if (x[1] >= min && x[1] <= max) print $0;}' "${fic%.*}_test2.${fic##*.}" > "${fic%.*}_test3.${fic##*.}"
+  awk -F ";" -v min="$date_min" -v max="$date_max" '{split($2,x,"T"); if (x[1] >= min && x[1] <= max) print $0;}' "${fic%.*}_temp2.${fic##*.}" > "${fic%.*}_temp3.${fic##*.}"
 else
-  cp -f "${fic%.*}_test2.${fic##*.}" "${fic%.*}_test3.${fic##*.}"
+  cp -f "${fic%.*}_temp2.${fic##*.}" "${fic%.*}_temp3.${fic##*.}"
 fi
+
+rm -f *_temp*.csv
