@@ -225,4 +225,11 @@ else
   cp -f "${fic%.*}_temp2.${fic##*.}" "${fic%.*}_temp3.${fic##*.}"
 fi
 
-rm -f *_temp*.csv
+#WIP
+#Move makefile outside src & make apropriate changes
+#Make script_meteo.sh compile the c
+#Make it sort various new files depending on what args are selected
+#Show the graphs
+#Not enough time to finish
+
+#rm -f *_temp*.csv
