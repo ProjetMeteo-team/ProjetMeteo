@@ -35,7 +35,7 @@ int main(int argc, char** argv){
   int sort = argv[1][0] - '0';
   if(sort == 1) tri_simple(input);
   else if(sort == 2) tri_abr(input);
-  else if(sort == 3) tri_avl(input);
+  else if(sort == 3 || sort == 0) tri_avl(input);
   else{
     printf("errror: no valid sort method")
     return 1;
