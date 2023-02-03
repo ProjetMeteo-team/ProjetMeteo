@@ -28,15 +28,15 @@ void tri_simple(FILE* input){
   while(new != NULL){
     Csv_line* head = root;
     if(new->first_element < head->first_element){
-      new->child[0] = head;
+      new->child = head;
       root = new;
     }
     else{
-      while(new->first_element > head->child[0]->first_element){
-        head = head->child[0];
+      while(new->first_element > head->child->first_element){
+        head = head->child;
       }
-      new->child[0] = head->child[0];
-      head->child[0] = new;
+      new->child = head->child;
+      head->child = new;
     }
     new = get_line(imput);
   }
