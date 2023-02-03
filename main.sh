@@ -24,7 +24,7 @@ for i in "$@" ; do
       date_min="$i"
       date=2
     else
-      echo "error"
+      echo "error: no minimum date specified after -d"
       exit 1
     fi
   elif (( $date == 2 )) ; then
@@ -32,7 +32,7 @@ for i in "$@" ; do
        date_max="$i"
        date=3
     else
-      echo "error"
+      echo "error: no maximum date specified after -d"
       exit 1
     fi
   elif (( $fichier == 1 )) ; then
@@ -40,13 +40,13 @@ for i in "$@" ; do
        fic="$i"
        fichier=2
     else
-      echo "error"
+      echo "error: no file specified after -f"
       exit 1
     fi
   else
     case $i in
       '--help')
-        echo -e "Utilisation: ./main.sh [OPTION]... [FICHIER]...
+        echo -e "Utilisation: ./main.sh [OPTION]... -f [FICHIER]...
 
   -t[MODE]        Affiche les données sur la température, en fonction du
                   MODE. Avec MODE 1, le minimum, maximum, et la moyenne sont
@@ -89,75 +89,75 @@ for i in "$@" ; do
         if (( $lieu == O )) ; then
           lieu=1
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '-G')
         if (( $lieu == O )) ; then
           lieu=2
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '-S')
         if (( $lieu == O )) ; then
           lieu=3
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '-A')
         if (( $lieu == O )) ; then
           lieu=4
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '-O')
         if (( $lieu == O )) ; then
           lieu=5
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '-Q')
         if (( $lieu == O )) ; then
           lieu=6
         else
-          echo "error"
+          echo "error: area already specified"
           exit 1
         fi;;
       '--tab')
         if (( $tri == O )) ; then
           tri=1
         else
-          echo "error"
+          echo "error: sorting method already specified"
           exit 1
         fi;;
       '--abr')
         if (( $tri == O )) ; then
           tri=2
         else
-          echo "error"
+          echo "error: sorting method already specified"
           exit 1
         fi;;
       '--avl')
         if (( $tri == O )) ; then
           tri=3
         else
-          echo "error"
+          echo "error: sorting method already specified"
           exit 1
         fi;;
       '-d')
         if (( $date > 2 )) ; then
-          echo "error"
+          echo "error: date already specified"
           exit 1
         else
           date=1
         fi;;
       '-f')
         if (( $fichier > 0 )) ; then
-          echo "error"
+          echo "error: file already specified"
           exit 1
         else
           fichier=1
@@ -190,8 +190,8 @@ sed -i '1d' "${fic%.*}_test.${fic##*.}"
 #thanks chatgpt for explaining how awk works
 case $lieu in
   0)
-    echo "no area selected";;
-    cp -f "${fic%.*}_test.${fic##*.}" "${fic%.*}_test2.${fic##*.}"
+    echo "no area selected"
+    cp -f "${fic%.*}_test.${fic##*.}" "${fic%.*}_test2.${fic##*.}";;
   1)
     echo "France"
     awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}";;
