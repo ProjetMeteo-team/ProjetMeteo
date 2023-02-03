@@ -44,23 +44,15 @@ void tri_simple(FILE* input){
   }
 }
 
-void add_abr(Csv_line* head, Csv_line* new){
+Csv_line* add_abr(Csv_line* head, Csv_line* new){
+  if(head = NULL) return new;
   if(new->first_element < head->first_element){
-    if(head->child[0] == NULL){
-      head->child[0] = new;
-    }
-    else{
-      add_abr(head->child[0], new);
-    }
+    head->child[0] = add_abr(head->child[0], new);
   }
   else{
-    if(head->child[1] == NULL){
-      head->child[1] = new;
-    }
-    else{
-      add_abr(head->child[1], new);
-    }
+    head->child[1] = add_abr(head->child[1], new);
   }
+  return head;
 }
 
 void tri_abr(FILE* input){
