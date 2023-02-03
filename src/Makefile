@@ -19,7 +19,7 @@ print.o :
 	@$(CC) -c print.c -o $(BUILD_FOLDER)tri.o
 
 # Everything at once
-all : main.o tri.o
+all : main.o tri.o print.o
 	@$(CC) $(BUILD_FOLDER)main.o $(BUILD_FOLDER)tri.o $(BUILD_FOLDER)print.o -o $(EXECUTABLE_NAME)
 
 # Cleaner
