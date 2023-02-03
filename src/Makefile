@@ -16,7 +16,7 @@ tri.o :
 	@$(CC) -c tri.c -o $(BUILD_FOLDER)tri.o
 
 print.o :
-	@$(CC) -c print.c -o $(BUILD_FOLDER)tri.o
+	@$(CC) -c print.c -o $(BUILD_FOLDER)print.o
 
 # Everything at once
 all : main.o tri.o print.o

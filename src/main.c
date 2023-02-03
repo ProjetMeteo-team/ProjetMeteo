@@ -1,18 +1,25 @@
 #include "header.h"
 
+int max_(int a, int b){
+	if(a>b){
+		return a;
+	}
+	return b;
+}
+
 Csv_line* get_line(FILE* input){
   char* line=NULL;
   size_t size = 0;
   Csv_line* x = malloc(sizeof(Csv_line));
   if(x==NULL){
-    printf("error: couldn't create required variable")
+    printf("error: couldn't create required variable");
     exit(1);
   }
-  int n = getline(&line, &size, input)
+  int n = getline(&line, &size, input);
   if(n != -1){
-    char* line_temp = malloc(sizeof(char) * n)
+    char* line_temp = malloc(sizeof(char) * n);
     if(line_temp==NULL){
-      printf("error: couldn't create required variables")
+      printf("error: couldn't create required variables");
       exit(1);
     }
     strcpy(line_temp, line);
@@ -31,7 +38,7 @@ Csv_line* get_line(FILE* input){
 int main(int argc, char** argv){
   if(argc<2){
     printf("error: missing arguments in sorting");
-    exit(1)
+    exit(1);
   }
   char filename[100]={};
   strcpy(filename, argv[0]);
@@ -40,7 +47,7 @@ int main(int argc, char** argv){
     printf("error: couldn't open file");
     exit(1);
   }
-  FILE output = fopen("meteo_data_final.csv", "w+");
+  FILE* output = fopen("meteo_data_final.csv", "w+");
   if(output == NULL){
     printf("error: couldn't save sorted values");
     exit(1);
@@ -59,7 +66,7 @@ int main(int argc, char** argv){
     abr_print(root, output);
   }
   else{
-    printf("errror: no valid sort method")
+    printf("errror: no valid sort method");
     exit(1);
   }
 }

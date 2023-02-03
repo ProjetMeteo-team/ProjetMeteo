@@ -1,8 +1,8 @@
 #include "header.h"
 
 Csv_line* tri_simple(FILE* input){
-  Csv_line* root = get_line(imput);
-  Csv_line* new = get_line(imput);
+  Csv_line* root = get_line(input);
+  Csv_line* new = get_line(input);
   while(new != NULL){
     Csv_line* head = root;
     if(new->first_element < head->first_element){
@@ -10,13 +10,13 @@ Csv_line* tri_simple(FILE* input){
       root = new;
     }
     else{
-      while(new->first_element > head->child->first_element){
+      while(new->first_element > head->child[0]->first_element){
         head = head->child[0];
       }
       new->child[0] = head->child[0];
       head->child[0] = new;
     }
-    new = get_line(imput);
+    new = get_line(input);
   }
   return root;
 }
@@ -33,11 +33,11 @@ Csv_line* add_abr(Csv_line* head, Csv_line* new){
 }
 
 Csv_line* tri_abr(FILE* input){
-  Csv_line* root = get_line(imput);
-  Csv_line* new = get_line(imput);
+  Csv_line* root = get_line(input);
+  Csv_line* new = get_line(input);
   while(new != NULL){
     add_abr(root, new);
-    new = get_line(imput);
+    new = get_line(input);
   }
   return root;
 }
@@ -52,7 +52,7 @@ Csv_line* rotate(Csv_line* head, int x){
 int get_height(Csv_line* head){
   if(head == NULL) return 0;
   else if(head->child[0]==NULL && head->child[1]==NULL) return 1;
-  else return 1+max(get_height(head->child[0]), get_height(head->child[1]));
+  else return 1+max_(get_height(head->child[0]), get_height(head->child[1]));
 }
 
 Csv_line* check_stability(Csv_line* head){
@@ -82,12 +82,12 @@ Csv_line* check_stability(Csv_line* head){
 }
 
 Csv_line* tri_avl(FILE* input){
-  Csv_line* root = get_line(imput);
-  Csv_line* new = get_line(imput);
+  Csv_line* root = get_line(input);
+  Csv_line* new = get_line(input);
   while(new != NULL){
     add_abr(root, new);
     root = check_stability(root);
-    new = get_line(imput);
+    new = get_line(input);
   }
   return root;
 }
