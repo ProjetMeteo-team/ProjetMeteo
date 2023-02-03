@@ -15,7 +15,7 @@ A cela, ajouter au moins une option à afficher parmi:
 -h pour représenter l'altitude de la localisation dite
 -m pour représenter l'humidité maximale de la localisation dite
 -d pour repésenter un intervalle entre deux dates
-* Ajouter parmi ces options après -t et -p:
+*Ajouter parmi ces options après -t et -p:
 °1 pour les températures (ou pressions) minimales, maximales et moyennes par localisation dans l’ordre croissant
 °2 pour les températures (ou pressions) moyennes par date/heure, triées dans l’ordre chronologique. La moyenne se fait sur toutes les localisations
 °3 pour les températures (ou pressions) par date/heure selon la localisation. Elles seront triées d’abord par ordre chronologique, puis par ordre croissant de l’identifiant de la localisation
