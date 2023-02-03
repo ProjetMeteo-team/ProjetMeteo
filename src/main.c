@@ -14,7 +14,9 @@ Csv_line* get_line(FILE* input){
     strcpy(line_temp, line);
     char* StrToken = strtok(line_temp, ";");
     strcpy(x->line, line);
-    x->first_element= atoi(StrToken);
+    x->first_element = atoi(StrToken);
+    x->child[0] = NULL;
+    x->child[1] = NULL;
     return x;
   }
   else{
@@ -28,22 +30,43 @@ void tri_simple(FILE* input){
   while(new != NULL){
     Csv_line* head = root;
     if(new->first_element < head->first_element){
-      new->child = head;
+      new->child[0] = head;
       root = new;
     }
     else{
       while(new->first_element > head->child->first_element){
-        head = head->child;
+        head = head->child[0];
       }
-      new->child = head->child;
-      head->child = new;
+      new->child[0] = head->child[0];
+      head->child[0] = new;
     }
     new = get_line(imput);
   }
 }
 
-void tri_abr(FILE* input){
+void add_abr(Csv_line* head, Csv_line* new){
+  if(new->first_element < head->first_element){
+    if(head->child[0] == NULL){
+      head->child[0] = new;
+    }
+    else{
+      add_abr(head->child[0], new);
+    }
+  }
+  else{
+    if(head->child[1] == NULL){
+      head->child[1] = new;
+    }
+    else{
+      add_abr(head->child[1], new);
+    }
+  }
+}
 
+void tri_abr(FILE* input){
+  Csv_line* root = get_line(imput);
+  Csv_line* new = get_line(imput);
+  add_abr(root, new);
 }
 
 void tri_avl(FILE* input){

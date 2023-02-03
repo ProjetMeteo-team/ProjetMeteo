@@ -5,5 +5,5 @@
 typedef struct Csv_lineS{
 	int first_element;
 	char line[300];
-  struct Csv_lineS* child;
+  struct Csv_lineS* child[2];
 } Csv_line;
