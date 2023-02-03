@@ -199,23 +199,23 @@ case $lieu in
     awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}";;
   2)
     echo "Guyane Francaise"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>2 && x[1]<5) && (x[2]>-54 && x[2]<-51)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   3)
     echo "Saint-Pierre et Miquelon"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>46 && x[1]<47) && (x[2]>-56 && x[2]<-56)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   4)
     echo "Antilles"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>13 && x[1]<16) && (x[2]>-67 && x[2]<-61)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   5)
     echo "Ocean Indien"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>-69 && x[1]<2) && (x[2]>21 && x[2]<123)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
   6)
     echo "Antartique"
-    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>-85 && x[1]<-60) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_temp.${fic##*.}" > "${fic%.*}_temp2.${fic##*.}"
     ;;
 esac
 
