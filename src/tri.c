@@ -1,3 +1,5 @@
+#include "header.h"
+
 void tri_simple(FILE* input){
   Csv_line* root = get_line(imput);
   Csv_line* new = get_line(imput);

@@ -11,6 +11,10 @@ Csv_line* get_line(FILE* input){
   int n = getline(&line, &size, input)
   if(n != -1){
     char* line_temp = malloc(sizeof(char) * n)
+    if(line_temp==NULL){
+      printf("error: couldn't create required variables")
+      exit(1);
+    }
     strcpy(line_temp, line);
     char* StrToken = strtok(line_temp, ";");
     strcpy(x->line, line);
