@@ -7,3 +7,10 @@ typedef struct Csv_lineS{
 	char line[300];
   struct Csv_lineS* child[2];
 } Csv_line;
+
+int max_(int a, int b){
+	if(a>b){
+		return a;
+	}
+	return b;
+}
