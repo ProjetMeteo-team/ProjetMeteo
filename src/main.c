@@ -40,10 +40,24 @@ int main(int argc, char** argv){
     printf("error: couldn't open file");
     exit(1);
   }
+  FILE output = fopen("meteo_data_final.csv", "w+");
+  if(output == NULL){
+    printf("error: couldn't save sorted values");
+    exit(1);
+  }
   int sort = argv[1][0] - '0';
-  if(sort == 1) tri_simple(input);
-  else if(sort == 2) tri_abr(input);
-  else if(sort == 3 || sort == 0) tri_avl(input);
+  if(sort == 1){
+    Csv_line* root = tri_simple(input);
+    simple_print(root, output);
+  }
+  else if(sort == 2){
+    Csv_line* root = tri_abr(input);
+    abr_print(root, output);
+  }
+  else if(sort == 3 || sort == 0){
+    Csv_line* root = tri_avl(input);
+    abr_print(root, output);
+  }
   else{
     printf("errror: no valid sort method")
     exit(1);

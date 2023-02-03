@@ -1,6 +1,6 @@
 #include "header.h"
 
-void tri_simple(FILE* input){
+Csv_line* tri_simple(FILE* input){
   Csv_line* root = get_line(imput);
   Csv_line* new = get_line(imput);
   while(new != NULL){
@@ -18,6 +18,7 @@ void tri_simple(FILE* input){
     }
     new = get_line(imput);
   }
+  return root;
 }
 
 Csv_line* add_abr(Csv_line* head, Csv_line* new){
@@ -31,13 +32,14 @@ Csv_line* add_abr(Csv_line* head, Csv_line* new){
   return head;
 }
 
-void tri_abr(FILE* input){
+Csv_line* tri_abr(FILE* input){
   Csv_line* root = get_line(imput);
   Csv_line* new = get_line(imput);
   while(new != NULL){
     add_abr(root, new);
     new = get_line(imput);
   }
+  return root;
 }
 
 Csv_line* rotate(Csv_line* head, int x){
@@ -79,7 +81,7 @@ Csv_line* check_stability(Csv_line* head){
   }
 }
 
-void tri_avl(FILE* input){
+Csv_line* tri_avl(FILE* input){
   Csv_line* root = get_line(imput);
   Csv_line* new = get_line(imput);
   while(new != NULL){
@@ -87,4 +89,5 @@ void tri_avl(FILE* input){
     root = check_stability(root);
     new = get_line(imput);
   }
+  return root;
 }
