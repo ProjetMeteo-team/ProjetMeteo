@@ -1,22 +1,38 @@
 #include "header.h"
 
-Csv_line* tri_simple(FILE* input){
+Csv_line* tri_simple(FILE* input, int way){
   Csv_line* root = get_line(input);
   Csv_line* new = get_line(input);
   while(new != NULL){
     Csv_line* head = root;
-    if(new->first_element < head->first_element){
-      new->child[0] = head;
-      root = new;
+    if(way=0){
+      if(new->first_element < head->first_element){
+        new->child[0] = head;
+        root = new;
+      }
+      else{
+        while(new->first_element > head->child[0]->first_element){
+          head = head->child[0];
+        }
+        new->child[0] = head->child[0];
+        head->child[0] = new;
+      }
+      new = get_line(input);
     }
     else{
-      while(new->first_element > head->child[0]->first_element){
-        head = head->child[0];
+      if(new->first_element > head->first_element){
+        new->child[0] = head;
+        root = new;
       }
-      new->child[0] = head->child[0];
-      head->child[0] = new;
+      else{
+        while(new->first_element < head->child[0]->first_element){
+          head = head->child[0];
+        }
+        new->child[0] = head->child[0];
+        head->child[0] = new;
+      }
+      new = get_line(input);
     }
-    new = get_line(input);
   }
   return root;
 }

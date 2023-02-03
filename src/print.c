@@ -7,10 +7,17 @@ void simple_print(Csv_line* head, FILE* output){
   }
 }
 
-void abr_print(Csv_line* head, FILE* output){
+void abr_print(Csv_line* head, FILE* output, int way){
   if(head!=NULL){
-    abr_print(head->child[0], output);
-    fprintf(output, "%s", head->line);
-    abr_print(head->child[1], output);
+    if(way=0){
+      abr_print(head->child[0], output, way);
+      fprintf(output, "%s", head->line);
+      abr_print(head->child[1], output, way);
+    }
+    else{
+      abr_print(head->child[1], output, way);
+      fprintf(output, "%s", head->line);
+      abr_print(head->child[0], output, way);
+    }
   }
 }

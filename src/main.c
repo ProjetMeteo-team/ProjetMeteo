@@ -36,7 +36,7 @@ Csv_line* get_line(FILE* input){
 }
 
 int main(int argc, char** argv){
-  if(argc<2){
+  if(argc<3){
     printf("error: missing arguments in sorting");
     exit(1);
   }
@@ -53,17 +53,18 @@ int main(int argc, char** argv){
     exit(1);
   }
   int sort = argv[1][0] - '0';
+	int way = argv[2][0] - '0';
   if(sort == 1){
-    Csv_line* root = tri_simple(input);
+    Csv_line* root = tri_simple(input, way);
     simple_print(root, output);
   }
   else if(sort == 2){
     Csv_line* root = tri_abr(input);
-    abr_print(root, output);
+    abr_print(root, output, way);
   }
   else if(sort == 3 || sort == 0){
     Csv_line* root = tri_avl(input);
-    abr_print(root, output);
+    abr_print(root, output, way);
   }
   else{
     printf("errror: no valid sort method");
