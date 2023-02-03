@@ -187,14 +187,35 @@ fi
 cp -f "$fic" "${fic%.*}_test.${fic##*.}"
 sed -i '1d' "${fic%.*}_test.${fic##*.}"
 
-#thanks chatgtp for explaining how awk works
+#thanks chatgpt for explaining how awk works
 case $lieu in
   0)
     echo "no area selected";;
   1)
     echo "France"
     awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}";;
-
+  2)
+    echo "Guyane Francaise"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    ;;
+  3)
+    echo "Saint-Pierre et Miquelon"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    ;;
+  4)
+    echo "Antilles"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    ;;
+  5)
+    echo "Ocean Indien"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    ;;
+  6)
+    echo "Antartique"
+    #awk -F ';' '{split($10,x,","); if ((x[1]>41 && x[1]<51) && (x[2]>-5 && x[2]<9)) print $0;}' "${fic%.*}_test.${fic##*.}" > "${fic%.*}_test2.${fic##*.}"
+    ;;
 esac
 
-awk -F ";" -v min="$date_min" -v max="$date_max" '{split($2,x,"T"); if (x[1] >= min && x[1] <= max) print $0;}' "${fic%.*}_test2.${fic##*.}" > "${fic%.*}_test3.${fic##*.}"
+if (( $date == 3 )) ; then
+  awk -F ";" -v min="$date_min" -v max="$date_max" '{split($2,x,"T"); if (x[1] >= min && x[1] <= max) print $0;}' "${fic%.*}_test2.${fic##*.}" > "${fic%.*}_test3.${fic##*.}"
+fi
