@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct LineS{
+typedef struct Csv_lineS{
 	char first_element[50];
 	char line[300];
-  struct LineS* child;
-} Line;
+  struct Csv_lineS* child;
+} Csv_line;
