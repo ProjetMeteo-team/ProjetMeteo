@@ -38,6 +38,7 @@ void tri_simple(FILE* input){
       new->child = head->child;
       head->child = new;
     }
+    new = get_line(imput);
   }
 }
 
