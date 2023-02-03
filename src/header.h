@@ -3,7 +3,7 @@
 #include <string.h>
 
 typedef struct Csv_lineS{
-	char first_element[50];
+	int first_element;
 	char line[300];
   struct Csv_lineS* child;
 } Csv_line;

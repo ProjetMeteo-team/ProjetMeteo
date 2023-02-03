@@ -14,17 +14,31 @@ Csv_line* get_line(FILE* input){
     strcpy(line_temp, line);
     char* StrToken = strtok(line_temp, ";");
     strcpy(x->line, line);
-    strcpy(x->first_element, StrToken);
+    x->first_element= atoi(StrToken);
     return x;
   }
   else{
-    printf("error: couldn't read line");
-    exit(1);
+    return NULL;
   }
 }
 
 void tri_simple(FILE* input){
-
+  Csv_line* root = get_line(imput);
+  Csv_line* new = get_line(imput);
+  while(new != NULL){
+    Csv_line* head = root;
+    if(new->first_element < head->first_element){
+      new->child = head;
+      root = new;
+    }
+    else{
+      while(new->first_element > head->child->first_element){
+        head = head->child;
+      }
+      new->child = head->child;
+      head->child = new;
+    }
+  }
 }
 
 void tri_abr(FILE* input){
